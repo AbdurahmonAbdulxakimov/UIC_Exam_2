@@ -14,7 +14,7 @@ class Company(BaseModel):
         return self.title
 
 
-class Vacany(BaseModel):
+class Vacancy(BaseModel):
     title = models.CharField(max_length=255)
 
     company = models.ForeignKey(
@@ -23,6 +23,10 @@ class Vacany(BaseModel):
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, related_name="vacancies"
     )
+
+    salary_from = models.IntegerField(default=0)
+    salary_to = models.IntegerField(default=0)
+    salary = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
